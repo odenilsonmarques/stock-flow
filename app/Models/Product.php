@@ -10,7 +10,6 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
         'supplier_id',
         'uuid',
         'product_number',
@@ -24,5 +23,10 @@ class Product extends Model
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
+    }
+
+    public function productOutPuts()
+    {
+        return $this->hasMany(ProductOutPut::class);
     }
 }
