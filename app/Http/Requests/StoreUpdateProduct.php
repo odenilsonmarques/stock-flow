@@ -24,9 +24,6 @@ class StoreUpdateProduct extends FormRequest
         return [
             'supplier_id' => ['required'],
             'name' => ['required', 'string', 'min:3', 'max:255', 'regex:/^[\pL0-9\s]+$/u'], //o parametro a expresssao (regex) no lugar da (alpha), pois o regex aceita somente letrar e espaços, a alpha nao aceita espaços
-            
-            
-            
             'product_number' => ['required', 'string', 'unique:products'],
             'quantity' => ['required', 'integer', 'min:1', 'regex:/^\d+$/'],
             'confirm_quantity' => ['required', 'integer', 'min:1', 'regex:/^\d+$/'],

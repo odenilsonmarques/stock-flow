@@ -8,33 +8,34 @@
             <div class="col-lg-12 mb-3">
                 <a href="{{ route('productOutputs.create') }}" class="btn btn-primary">Nova Saída</a>
             </div>
-            <table class="table table-hover">
+            <table class="table table-bordered table-striped">
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Nome</th>
-                        <th>Fornecedor</th>
-                        <th>Código do Produto</th>
+                        <th>Produto</th>
                         <th>Quantidade</th>
-                        <th>Ações</th>
+                        <th>Destino</th>
+                        <th>Recebedor</th>
+                        <th>Registrado por</th>
+                        <th>Data</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($productOutPuts as $productOutPut)
+                    @forelse ($productOutPuts as $output)
                         <tr>
-                            <td>{{ $productOutPut->id }}</td>
-                            {{-- <td>{{ $productOutPut->product->name }}</td> --}}
-                            <td>{{ $productOutPut->user->name }}</td>
-                            <td>
-                                <a href="#" class="btn btn-warning">Editar</a>
-                                <form action="#" method="post" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Excluir</button>
-                                </form>
-                            </td>
+                            <td>{{ $output->id }}</td>
+                            <td>{{ $output->product->name ?? '-' }}</td>
+                            <td>{{ $output->quantity_output }}</td>
+                            <td>{{ ucfirst($output->destiny) }}</td>
+                            <td>{{ ucfirst($output->responsible_for_receiving) }}</td>
+                            <td>{{ $output->admin->name ?? 'N/A' }}</td>
+                            <td>{{ $output->created_at->format('d/m/Y H:i') }}</td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="7" class="text-center">Nenhuma saída registrada.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
 

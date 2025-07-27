@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductOutPut;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUpdateProductOutPut;
 
 class ProductOutPutController extends Controller
 {
@@ -21,11 +22,17 @@ class ProductOutPutController extends Controller
         return view('productOutPut.create', compact('products'));
     }
 
-    public function store(Request $request)
+    public function store(StoreUpdateProductOutPut $request)
     {
-        // Lógica para armazenar a saída de produtos
-        // Validar e processar os dados do formulário
+        $data = $request->validated(); // já validado e seguro
+        $data['admin_id'] = auth()->id(); // garante que o ID do admin logado seja usado
 
-        return redirect()->route('productOutPuts.index')->with('success', 'Saída de produto registrada com sucesso!');
+        ProductOutPut::create($data);
+
+        // dd($data); // para depuração, remova em produção
+
+        return redirect()
+            ->route('productOutPuts.index')
+            ->with('success', 'Saída de produto registrada com sucesso!');
     }
 }
