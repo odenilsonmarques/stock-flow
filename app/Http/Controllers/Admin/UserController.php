@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUpdateUser;
 
 class UserController extends Controller
 {
@@ -29,23 +30,15 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUpdateUser $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'min:6', 'confirmed'],
-            'is_admin' => ['required', 'boolean'],
-        ]);
-
+        // validação já foi feita no StoreUpdateUser
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'is_admin' => $request->is_admin,
         ]);
-
-
 
         return redirect()->route('admin.users.index')->with('success', 'Usuário criado com sucesso!');
     }
