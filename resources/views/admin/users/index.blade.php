@@ -4,9 +4,9 @@
 @section('content')
     <div class="container">
         <div class="row mt-5">
-            <div class="col-lg-12 mb-3 mt-5 justify-content-end d-flex">
+            <div class="col-lg-12 mb-3 mt-5 justify-content-end d-flex ">
                 <a href="{{ route('admin.users.create') }}" class="btn btn-secondary d-inline-flex align-items-center gap-2">
-                    <span class="text-custom-btn-new-user">Novo Usuário</span>
+                    <span class="text-custom-btn-users">Novo Usuário</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-person-fill-add" viewBox="0 0 16 16">
                         <path
@@ -21,7 +21,7 @@
                 <p>Nenhum usuário cadastrado.</p>
             @else
                 <table class="table table-striped table-bordered table-hover">
-                    <thead class="table-dark">
+                    <thead class="header-table-custom">
                         <tr>
                             <th>Nome</th>
                             <th>Email</th>

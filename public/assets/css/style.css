@@ -23,7 +23,13 @@ button a{
 }
 
 .card-header{
-    background-color: #AEC2B6;
+    background-color: #6c757d;;
+}
+
+
+.header-table-custom{
+    background-color: #6c757d;
+   
 }
 
 
@@ -195,6 +201,6 @@ button.inputSearch{
 
 
 
-.text-custom-btn-new-user{
+.text-custom-btn-users{
     font-size: 13px;;
 }

@@ -4,10 +4,20 @@
 @section('content')
     <div class="container">
         <div class="row mt-5">
+            <div class="col-lg-12  mt-5 justify-content-end d-flex">
+                <a href="{{ route('admin.users.index') }}" class="btn btn-secondary d-inline-flex align-items-center gap-2">
+                    <span class="text-custom-btn-users">Usuários</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                    </svg>
+                </a>
+            </div>
             <form action="{{ route('admin.users.store') }}" method="POST">
                 @csrf
-                <div class="card mt-5">
-                    <div class="card-header d-flex align-items-center">
+                <div class="card mt-3">
+                    <div class="p-2 d-flex align-items-center text-white bg-secondary rounded-top">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-person-fill me-2" viewBox="0 0 16 16">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
@@ -48,8 +58,9 @@
                             </div>
                             <div class="col-lg-12 mb-3">
                                 <label for="password_confirmation" class="form-label required">Confirmação da Senha</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
-                                    placeholder="Digite aqui" title="Informe a confirmação da senha" required>
+                                <input type="password" name="password_confirmation" id="password_confirmation"
+                                    class="form-control" placeholder="Digite aqui" title="Informe a confirmação da senha"
+                                    required>
                                 @error('password_confirmation')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -63,13 +74,14 @@
                                 <select id="role" name="is_admin" class="form-select" required
                                     title="Selecione o papel do usuário">
                                     <option value="" {{ old('is_admin') == '' ? 'selected' : '' }}>Selecione</option>
-                                    <option value="1" {{ old('is_admin') == '1' ? 'selected' : '' }}>Administrador</option>
+                                    <option value="1" {{ old('is_admin') == '1' ? 'selected' : '' }}>Administrador
+                                    </option>
                                     <option value="0" {{ old('is_admin') == '0' ? 'selected' : '' }}>Usuário</option>
                                 </select>
                                 @error('is_admin')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>  
+                            </div>
 
                         </div>
 
