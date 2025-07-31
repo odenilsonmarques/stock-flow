@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.template-admin')
 @section('title', 'lista de usuarios')
 
 @section('content')
