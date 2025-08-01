@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Product\ProductController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\ProductOutPut\ProductOutPutController;
 use App\Http\Controllers\Admin\UserController;
+
 
 
 
@@ -56,3 +58,5 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('users', UserController::class)->except(['show']);
 });
 
+// aqui posso fazer ou nao um controller para o dashboard do admin, mas como é uma rota simples, não vejo necessidade de criar um controller separado.
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware('auth')->name('admin.dashboard');
