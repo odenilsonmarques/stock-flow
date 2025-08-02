@@ -4,49 +4,81 @@
 @section('content')
     <div class="container">
         <h1 class="text-center title fs-3">Bem-vindo</h1>
-        <h6 class="text-center">Dashboard administrador</h6>
+        @php
+            $hora = date('H');
+            if ($hora < 12) {
+                $mensagem = "Bom dia";
+            } elseif ($hora < 18) {
+                $mensagem = "Boa tarde";
+            } else {
+                $mensagem = "Boa noite";
+            }
+        @endphp
+        <h6 class="text-center">{{ $mensagem }}, {{ date('d/m/Y') }}</h6>
 
 
         <div class="row mt-3">
-            <div class="col-lg-3">
-                <div class="card ">
-                    {{-- <div class="card-header">
-                        <h5>Bem-vindo ao painel de administração</h5>
-                    </div> --}}
-                    <div class="card-body text-center">
-                        <a href="{{ route('admin.users.index') }}"
-                            class="btn btn-secondary d-inline-flex align-items-center gap-2 mb-4">
-                            <span class="text-custom-btn-users">Usuários cadastrados</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-people-fill" viewBox="0 0 16 16">
-                                <path
-                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-                            </svg>
-                        </a>
-                        
-                        <a href="{{ route('admin.users.create') }}"
-                            class="btn btn-secondary d-inline-flex align-items-center gap-2">
-                            <span class="text-custom-btn-users">Novo Usuário</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-person-fill-add" viewBox="0 0 16 16">
-                                <path
-                                    d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                <path
-                                    d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
-                            </svg>
-                        </a>
+            <div class="col-lg-12">
+                <div class="row text-center justify-content-center">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Total de Fornecedores</h6>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#supplierModal"
+                                    class="btn btn-primary"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
+                        <div class="card card-black">
+                            <div class="card-body">
+                                <h6 class="card-title">Produtos Cadastrados</h6>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal"
+                                    class="btn btn-primary"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Produtos Disponiveis</h6>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#productAvailableModal"
+                                    class="btn btn-primary"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Produtos com quantidade minima</h6>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#productsMinimumModal"></a>
+                            </div>
+                        </div>
+                    </div>
 
 
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Produtos abaixo da quantidade minima</h6>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#productsBeloMinimumModal"></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="card">
-                    <div class="card-header">
-                        <h5>Estatísticas</h5>
-                    </div>
-                    <div class="card-body">
-                        <p>Aqui você pode visualizar estatísticas e relatórios.</p>
+
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Produtos com estoque zerado</h6>
+                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#productsWithZeroStockModal"></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
