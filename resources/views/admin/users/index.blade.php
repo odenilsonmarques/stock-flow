@@ -27,7 +27,6 @@
                     </svg>
                 </a>
             </div>
-
             @if ($users->isEmpty())
                 <p>Nenhum usuário cadastrado.</p>
             @else

@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.template-admin')
 @section('title', 'cadastro de produto')
 
 @section('content')
