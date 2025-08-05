@@ -1,10 +1,16 @@
 @extends('layouts.template-admin')
-@section('title', 'lista de usuarios')
+@section('title', 'Usuários')
 
 @section('content')
     <div class="container">
         <div class="row mt-5">
-            <div class="col-lg-12 mb-3 mt-5 justify-content-end d-flex ">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show text-center mt-5" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {{ session('success') }}
+                </div>
+            @endif
+            <div class="col-lg-12 mt-5 justify-content-end d-flex ">
                 <a href="{{ route('admin.dashboard') }}"
                     class="btn btn-secondary d-inline-flex align-items-center gap-2 me-2">
                     <span class="text-custom-btn-users">Dashboard </span>
@@ -30,7 +36,8 @@
             @if ($users->isEmpty())
                 <p>Nenhum usuário cadastrado.</p>
             @else
-                <table class="table table-striped table-bordered table-hover">
+                <table class="table table-striped table-bordered table-hover caption-top">
+                    <caption>Usuários</caption>
                     <thead class="header-table-custom">
                         <tr>
                             <th>Nome</th>

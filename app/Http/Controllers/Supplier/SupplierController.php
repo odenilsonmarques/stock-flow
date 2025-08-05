@@ -35,7 +35,7 @@ class SupplierController extends Controller
         // dd($request->all());
         $data = $request->all();
         Supplier::create($data);
-        return redirect()->route('suppliers.index')->with('success', 'Supplier created successfully.');
+        return redirect()->route('suppliers.index')->with('success', 'Fornecedor cadastrado com sucesso!');
     }
 
     /**

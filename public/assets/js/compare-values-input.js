@@ -1,9 +1,9 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    var amountInput = document.getElementById("amount");
-    var confirmAmountInput = document.getElementById("confirm_amount");
-    var minimumAmountInput = document.getElementById("minimum_amount");
-    var supplierSelect = document.getElementById("supplier_id");
+    var quantityInput = document.getElementById("quantity");
+    var confirmQuantityInput = document.getElementById("confirm_quantity");
+    var minimumQuantityInput = document.getElementById("minimum_quantity");
+    // var supplierSelect = document.getElementById("supplier_id");
 
     var submitButton = document.getElementById("submitBtn");
     var form = document.getElementById("productForm");
@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Custom validation after required fields are checked
-        var amountValue = parseFloat(amountInput.value);
-        var confirmAmountValue = parseFloat(confirmAmountInput.value);
-        var minimumAmountValue = parseFloat(minimumAmountInput.value);
+        var quantityValue = parseFloat(quantityInput.value);
+        var confirmQuantityValue = parseFloat(confirmQuantityInput.value);
+        var minimumQuantityValue = parseFloat(minimumQuantityInput.value);
 
-        if (amountValue !== confirmAmountValue) {
+        if (quantityValue !== confirmQuantityValue) {
             event.preventDefault();
             swal.fire({
                 title: "Ops...",
                 text: "Os campos quantidade e confirme a quantidade precisam ter o mesmo valor!",
             });
-        } else if (amountValue < minimumAmountValue) {
+        } else if (quantityValue < minimumQuantityValue) {
             event.preventDefault();
             swal.fire({
                 title: "Ops...",

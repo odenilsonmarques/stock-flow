@@ -86,7 +86,7 @@
 
                         <div class="row">
                             <div class="col-lg-12 mb-3">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="email" class="form-label required">Email</label>
                                 <input type="email" name="email" id="email" class="form-control" required
                                     title="Informe o email" value="{{ old('email') }}" placeholder="Digite aqui"
                                     title="Informe o email">
@@ -174,7 +174,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12 mt-5">
+                    <div class="col-lg-12 mt-3">
                         <button class="btn btn-danger"><a href="#">CANCELAR</a></button>
                         <button type="submit" class="btn btn-success">CADASTRAR</button>
                     </div>

@@ -1,5 +1,5 @@
 @extends('layouts.template-admin')
-@section('title', 'cadastro de produto')
+@section('title', 'Cadastro de produto')
 
 @section('content')
     <div class="container">
@@ -23,7 +23,7 @@
                     </svg>
                 </a>
             </div>
-            <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data" id="productForm">
                 @csrf<!--csrf tokem de segurnça padrao do laravel para envio de requisao-->
                 <div class="card mt-3">
                     <div class="card-header d-flex align-items-center text-white bg-secondary rounded-top">
@@ -88,7 +88,7 @@
                             <div class="col-lg mb-3">
                                 <label for="quantity" class="form-label required">Quantidade</label>
                                 <input type="number" name="quantity" id="quantity" class="form-control"
-                                    title="Informe a quantidade" placeholder="Digite aqui" value="{{ old('quantity') }}"
+                                    title="Informe a quantidade" placeholder="Digite aqui"   value="{{ old('quantity') }}"
                                     required>
                                 @error('quantity')
                                     <div class="text-danger">{{ $message }}</div>
@@ -130,9 +130,9 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 mt-5">
+                    <div class="col-lg-12 mt-3">
                         <button class="btn btn-danger"><a href="#">CANCELAR</a></button>
-                        <button type="submit" class="btn btn-success">CADASTRAR</button>
+                        <button type="submit" class="btn btn-success" id="submitBtn">CADASTRAR</button>
                     </div>
                 </div>
             </form>

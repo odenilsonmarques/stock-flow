@@ -1,5 +1,5 @@
 @extends('layouts.template-admin')
-@section('title', 'saída de produtos')
+@section('title', 'Cadastro de Saída de Produtos')
 
 @section('content')
     <div class="container">
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 mt-5">
+                    <div class="col-lg-12 mt-3">
                         <button class="btn btn-danger"><a href="#">CANCELAR</a></button>
                         <button type="submit" class="btn btn-success">CADASTRAR</button>
                     </div>

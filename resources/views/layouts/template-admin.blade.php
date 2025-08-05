@@ -8,6 +8,7 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/sweetalert2.min.css') }}">
 </head>
 
 <body>
@@ -83,7 +84,7 @@
                                     Gerenciar Usuários
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li>
+                                    {{-- <li>
                                         <a class="dropdown-item d-flex align-items-center gap-2"
                                             href="{{ route('admin.users.create') }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -93,9 +94,9 @@
                                                 <path
                                                     d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
                                             </svg>
-                                            Adicionar Usuário
+                                            Novo Usuário
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
                                         <a class="dropdown-item d-flex align-items-center gap-2"
                                             href="{{ route('admin.users.index') }}">
@@ -104,7 +105,7 @@
                                                 <path
                                                     d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
                                             </svg>
-                                            Listar Usuários
+                                            Usuários
                                         </a>
                                     </li>
                                 </ul>
@@ -184,6 +185,9 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts-supplier.js') }}"></script>
     <script src="{{ asset('assets/js/generateProductNumber.js') }}"></script>
+    <script src="{{ asset('assets/js/compare-values-input.js') }}"></script>
+    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
+
 </body>
 
 </html>
