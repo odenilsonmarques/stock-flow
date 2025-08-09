@@ -3,6 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Product;
+
+use Illuminate\validation\Validator;
 
 class StoreUpdateProductOutPut extends FormRequest
 {
@@ -29,6 +32,26 @@ class StoreUpdateProductOutPut extends FormRequest
         ];
     }
 
+
+
+    /**
+     * Configure the validator instance.
+     * Este método é usado para adicionar regras de validação adicionais após as regras básicas terem sido aplicadas.
+     * Aqui, verificamos se a quantidade solicitada é maior que a quantidade disponível do produto
+     */
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            $productId = $this->input('product_id');
+            $requestedQuantity = $this->input('quantity_output');
+
+            $product = Product::find($productId);
+
+            if ($product && $requestedQuantity > $product->quantity) {
+                $validator->errors()->add('quantity_output', "Quantidade indisponível. Disponível: {$product->quantity}");
+            }
+        });
+    }
 
 
     public function messages()

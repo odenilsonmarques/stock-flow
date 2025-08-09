@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade');
             $table->string('name')->unique();
             $table->string('type_supplier');
             $table->string('cpf_cnpj')->unique();

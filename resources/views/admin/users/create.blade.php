@@ -85,8 +85,13 @@
                                     <option value="" {{ old('is_admin') == '' ? 'selected' : '' }}>Selecione</option>
                                     <option value="1" {{ old('is_admin') == '1' ? 'selected' : '' }}>Administrador
                                     </option>
-                                    <option value="0" {{ old('is_admin') == '0' ? 'selected' : '' }}>Usuário</option>
+                                    {{-- esta opção só aparece se já existir um admin cadastrado, seguindo a lógica do metodo create no controller UserController --}}
+                                    @if ($hasAdmin)
+                                        <option value="0" {{ old('is_admin') == '0' ? 'selected' : '' }}>Usuário
+                                        </option>
+                                    @endif
                                 </select>
+
                                 @error('is_admin')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror

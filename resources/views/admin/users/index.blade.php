@@ -53,9 +53,9 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->is_admin ? 'Sim' : 'Não' }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-secondary">
+                                    <a href="#" class="btn btn-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                            fill="#94AF97" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                             <path
                                                 d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                             <path fill-rule="evenodd"
@@ -65,9 +65,9 @@
                                     <form action="#" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">
+                                        <button type="submit" class="btn btn-sm">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                fill="#94AF97" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path
                                                     d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
                                                 <path

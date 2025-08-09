@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'supplier_id',
+        'admin_id',
         'uuid',
         'product_number',
         'name',
@@ -28,5 +29,10 @@ class Product extends Model
     public function productOutPuts()
     {
         return $this->hasMany(ProductOutPut::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(User::class);
     }
 }

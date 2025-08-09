@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('uuid')->unique();
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('product_number')->unique();
-            $table->integer('quantity');
+            $table->integer('quantity')->default(0);
             $table->integer('confirm_quantity');
             $table->integer('minimum_quantity');
             $table->timestamps();

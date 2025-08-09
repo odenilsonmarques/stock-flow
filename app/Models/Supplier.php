@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Supplier extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'name',
         'type_supplier',
@@ -20,11 +20,18 @@ class Supplier extends Model
         'city',
         'district',
         'state',
-        'zip_code'
+        'zip_code',
+        'admin_id',
+        
     ];
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(User::class);
     }
 }

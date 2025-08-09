@@ -26,14 +26,14 @@ class StoreUpdateSupplier extends FormRequest
             'name' => ['required', 'string', 'min:3', 'max:255', 'unique:suppliers'],
             'type_supplier' => ['required', 'string'],
             'cpf_cnpj' => ['required', 'string', 'unique:suppliers'],
-            'phone' => ['required', 'string', 'unique:suppliers'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:suppliers'],
-            'zip_code' => ['nullable', 'string', 'max:8'],
-            'address' => ['required', 'string','max:225'],
+            'phone' => ['required', 'string', 'unique:suppliers'],
+            'address' => ['required', 'string', 'max:225'],
             'number' => ['nullable', 'string', 'max:5'],
-            'district' => ['required', 'string', 'max:100'],
             'city' => ['required', 'string', 'max:100'],
+            'district' => ['required', 'string', 'max:100'],
             'state' => ['required', 'string', 'max:100'],
+            'zip_code' => ['nullable', 'string', 'max:8'],
         ];
     }
 

@@ -59,13 +59,12 @@
 
 
                         <div class="row">
-
                             <div class="col-lg mb-3">
                                 <label for="quantity_output" class="form-label required">Quantidade</label>
                                 <input type="number" name="quantity_output" id="quantity_output" class="form-control"
                                     title="Informe a quantidade" placeholder="Digite aqui"
                                     value="{{ old('quantity_output') }}" required>
-                                @error('quantity')
+                                @error('quantity_output')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -81,12 +80,12 @@
                             </div>
 
                             <div class="col-lg mb-3">
-                                <label for="responsible_for_receiving" class="form-label required">Responsável po
-                                    receber<label>
+                                <label for="responsible_for_receiving" class="form-label required">Responsável po receber</label>
                                         <input type="text" name="responsible_for_receiving"
                                             id="responsible_for_receiving" class="form-control"
                                             title="Informe o nome do responsável pelo recebimento" placeholder="Digite aqui"
                                             value="{{ old('responsible_for_receiving') }}" required>
+
                                         @error('responsible_for_receiving')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror

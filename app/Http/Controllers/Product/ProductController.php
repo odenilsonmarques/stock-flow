@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Supplier;
 use App\Http\Requests\StoreUpdateProduct;
-use Illuminate\Http\Request;    
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('product.index', compact('products', )); 
+        return view('product.index', compact('products',));
     }
 
     public function create()
@@ -27,12 +28,11 @@ class ProductController extends Controller
     public function store(StoreUpdateProduct $request)
     {
         $data = $request->validated();
+        $data['admin_id'] = Auth::id(); // pega o id do usuário administrador logado
         $data['uuid'] = (string) Str::uuid();
         Product::create($data);
         // dd($data);
         return redirect()->route('products.index')
-        ->with('success', 'Produto cadastrado com sucesso!');
-
+            ->with('success', 'Produto cadastrado com sucesso!');
     }
-
 }

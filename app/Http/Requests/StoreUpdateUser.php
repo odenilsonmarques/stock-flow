@@ -23,7 +23,7 @@ class StoreUpdateUser extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'min:3'],
-            'email' => ['required', 'email', 'unique:users,email'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:6', 'confirmed'],
             'is_admin' => ['required', 'boolean'],
         ];

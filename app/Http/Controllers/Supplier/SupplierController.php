@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Supplier;
 use App\Http\Requests\StoreUpdateSupplier;
 use Illuminate\Contracts\Cache\Store;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
@@ -33,7 +34,8 @@ class SupplierController extends Controller
     public function store(StoreUpdateSupplier $request)
     {
         // dd($request->all());
-        $data = $request->all();
+        $data = $request->validated();
+        $data['admin_id'] = Auth::id(); // pega o id do usuário administrador logado
         Supplier::create($data);
         return redirect()->route('suppliers.index')->with('success', 'Fornecedor cadastrado com sucesso!');
     }

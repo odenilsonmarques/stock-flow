@@ -42,7 +42,7 @@ require __DIR__.'/auth.php';
 
 // Essa rota foi criada para configurar o primeiro usuário administrador do sistema.
 // Ela so deve ser acessada se não houver nenhum usuário cadastrado, ou seja, é uma configuração inicial do sistema.
-// Lembrar de passar no fomulário essa rota de redirecionamento para cadastro do usuário administrador. Depois alterar para a rota admin.users.store
+// Lembrar de passar no fomulário essa rota(setup-admin.store) de redirecionamento para cadastro do primeiro usuário administrador. Depois alterar para a rota admin.users.store
 if (\App\Models\User::count() === 0) {
     Route::get('/setup-admin', [UserController::class, 'create'])->name('setup-admin.create');
     Route::post('/setup-admin', [UserController::class, 'store'])->name('setup-admin.store');

@@ -24,24 +24,35 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        // Verifica se já existe um admin cadastrado, para decidir se mostra a opção de criar usuário comum ou não
+        $hasAdmin = User::where('is_admin', 1)->exists();
+        return view('admin.users.create', compact('hasAdmin'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreUpdateUser $request)
     {
-        // validação já foi feita no StoreUpdateUser
+        // Se não existe nenhum usuário, força como admin
+        $isFirstUser = User::count() === 0;
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'is_admin' => $request->is_admin,
+            'is_admin' => $isFirstUser ? 1 : ($request->is_admin ?? 0),
         ]);
+
+        // Se for o primeiro usuário, redireciona direto para login
+        if ($isFirstUser) {
+            return redirect()->route('login')->with('success', 'Administrador criado com sucesso! Faça login.');
+        }
 
         return redirect()->route('admin.users.index')->with('success', 'Usuário criado com sucesso!');
     }
+
 
     /**
      * Display the specified resource.
