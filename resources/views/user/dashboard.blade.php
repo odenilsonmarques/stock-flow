@@ -22,10 +22,31 @@
                         <div class="card">
                             <div class="card-body">
                                 <h6 class="card-title">Produtos Disponíveis</h6>
+                                <button  data-bs-toggle="modal" data-bs-target="#productsModal" type="button" class="btn btn-primary">
+                                    Ver detalhes <span class="badge text-bg-secondary fs-6">{{ $availableProducts }}</span>
+                                </button>
+
+
+
+
+
+{{-- 
+                                <span class="card-text value-custom">{{ $availableProducts }}</span>
+
+                                <style>
+                                    .value-custom {
+                                        font-weight: bold;
+                                        font-size: 1.2rem;
+                                        border: 2px solid #ccc;
+                                        padding: 7px;
+                                        border-radius: 100px;
+                                    }
+                                </style>
+
                                 <a href="#" data-bs-toggle="modal" data-bs-target="#productsModal"
-                                    class="btn btn-primary">
-                                    {{ $availableProducts }}
-                                </a>
+                                    class="btn btn-outline-secondary bg-secondary text-white mt-3">
+                                    Ver detalhes
+                                </a> --}}
                             </div>
                         </div>
                     </div>
@@ -36,16 +57,15 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="productsModalLabel">Lista de Produtos</h5>
+                                    <h5 class="modal-title" id="productsModalLabel">Produtos Disponíveis</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
                                     <table class="table table-striped">
-                                        <thead>
+                                        <thead class="header-table-custom">
                                             <tr>
                                                 <th>Nome</th>
                                                 <th>Quantidade</th>
-                                                <th>Preço</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -53,7 +73,6 @@
                                                 <tr>
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->quantity }}</td>
-                                                    <td>R$ {{ number_format($product->price, 2, ',', '.') }}</td>
                                                 </tr>
                                             @empty
                                                 <tr>
@@ -66,61 +85,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-                    {{-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card card-black">
-                            <div class="card-body">
-                                <h6 class="card-title">Produtos Cadastrados</h6>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal"
-                                    class="btn btn-primary"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Produtos Disponiveis</h6>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#productAvailableModal"
-                                    class="btn btn-primary"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Produtos com quantidade minima</h6>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#productsMinimumModal"></a>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Produtos abaixo da quantidade minima</h6>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#productsBeloMinimumModal"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Produtos com estoque zerado</h6>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#productsWithZeroStockModal"></a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
