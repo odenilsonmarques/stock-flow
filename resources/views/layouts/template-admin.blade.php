@@ -185,7 +185,7 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts-supplier.js') }}"></script>
     <script src="{{ asset('assets/js/generateProductNumber.js') }}"></script>
-    <script src="{{ asset('assets/js/compare-values-input.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/compare-values-input.js') }}"></script> --}}
     <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
 
 </body>

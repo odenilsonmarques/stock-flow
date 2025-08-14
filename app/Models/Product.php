@@ -13,11 +13,9 @@ class Product extends Model
         'supplier_id',
         'admin_id',
         'uuid',
-        'product_number',
         'name',
         'description',
-        'quantity',
-        'confirm_quantity',
+        'product_number',
         'minimum_quantity',
     ];
 
@@ -28,7 +26,12 @@ class Product extends Model
 
     public function productOutPuts()
     {
-        return $this->hasMany(ProductOutPut::class);
+        return $this->hasMany(ProductOutPuts::class);
+    }
+
+    public function productInputs()
+    {
+        return $this->hasMany(ProductInputs::class);
     }
 
     public function admin()

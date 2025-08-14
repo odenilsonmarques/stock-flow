@@ -85,7 +85,7 @@
                             </div>
 
 
-                            <div class="col-lg mb-3">
+                            {{-- <div class="col-lg mb-3">
                                 <label for="quantity" class="form-label required">Quantidade</label>
                                 <input type="number" name="quantity" id="quantity" class="form-control"
                                     title="Informe a quantidade" placeholder="Digite aqui"   value="{{ old('quantity') }}"
@@ -103,7 +103,7 @@
                                 @error('confirm_quantity')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
 
                             <div class="col-lg mb-3">
                                 <label for="minimum_quantity" class="form-label required">Quantidade Mínima</label>

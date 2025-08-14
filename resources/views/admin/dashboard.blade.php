@@ -7,11 +7,11 @@
         @php
             $hora = date('H');
             if ($hora < 12) {
-                $mensagem = "Bom dia";
+                $mensagem = 'Bom dia';
             } elseif ($hora < 18) {
-                $mensagem = "Boa tarde";
+                $mensagem = 'Boa tarde';
             } else {
-                $mensagem = "Boa noite";
+                $mensagem = 'Boa noite';
             }
         @endphp
         <h6 class="text-center">{{ $mensagem }}, {{ date('d/m/Y') }}</h6>
@@ -21,22 +21,26 @@
             <div class="col-lg-12">
                 <div class="row text-center justify-content-center">
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card ">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Total de Fornecedores</h6>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#supplierModal"
-                                    class="btn btn-primary"></a>
+                        <div class="card border-0">
+                            <div class="card-body ">
+                                <h6 class="card-title">Fornecedores</h6>
+                                <button data-bs-toggle="modal" data-bs-target="#productsModal" type="button"
+                                    class="btn btn-outline-secondary bg-secondary text-white mt-3">
+                                    Ver detalhes <span
+                                        class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $suppliersQuantity }}</span>
+                                </button>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card card-black">
-                            <div class="card-body">
-                                <h6 class="card-title">Produtos Cadastrados</h6>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#productModal"
-                                    class="btn btn-primary"></a>
-                            </div>
+                        <div class="card-body ">
+                            <h6 class="card-title">Produtos</h6>
+                            <button data-bs-toggle="modal" data-bs-target="#productsModal" type="button"
+                                class="btn btn-outline-secondary bg-secondary text-white mt-3">
+                                Ver detalhes <span
+                                    class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $productsQuantity }}</span>
+                            </button>
                         </div>
                     </div>
 

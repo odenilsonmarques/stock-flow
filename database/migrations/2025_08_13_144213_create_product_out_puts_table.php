@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_out_puts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('admin_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('quantity_output');
             $table->string('destiny');
             $table->string('responsible_for_receiving');
