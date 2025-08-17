@@ -42,6 +42,18 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
                                         <a class="dropdown-item d-flex align-items-center gap-2"
+                                            href="{{ route('products.index') }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z" />
+                                            </svg>
+                                            Estoque
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center gap-2"
                                             href="{{ route('suppliers.index') }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -51,15 +63,17 @@
                                             Fornecedores
                                         </a>
                                     </li>
+
                                     <li>
                                         <a class="dropdown-item d-flex align-items-center gap-2"
-                                            href="{{ route('products.index') }}">
+                                            href="{{ route('productsInput.index') }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-box-fill" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.004-.001.274-.11a.75.75 0 0 1 .558 0l.274.11.004.001zm-1.374.527L8 5.962 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339Z" />
+                                                fill="currentColor" class="bi bi-arrow-down-square-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0" />
                                             </svg>
-                                            Produtos
+                                            Entrada de Produtos
                                         </a>
                                     </li>
 
@@ -67,10 +81,9 @@
                                         <a class="dropdown-item d-flex align-items-center gap-2"
                                             href="{{ route('productOutPuts.index') }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z" />
-                                            </svg>
+                                                fill="currentColor" class="bi bi-arrow-up-square-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M2 16a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2zm6.5-4.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 1 0" />
                                             </svg>
                                             Saída de Produto
                                         </a>

@@ -4,7 +4,8 @@ namespace App\Http\Controllers\ProductOutPut;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use App\Models\ProductOutPut;
+use App\Models\ProductOutput;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUpdateProductOutPut;
@@ -13,7 +14,7 @@ class ProductOutPutController extends Controller
 {
     public function index()
     {
-        $productOutPuts = ProductOutPut::all();
+        $productOutPuts = ProductOutput::all();
         return view('productOutPut.index', compact('productOutPuts'));
     }
 

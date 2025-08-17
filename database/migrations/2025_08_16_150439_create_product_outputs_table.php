@@ -11,25 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_inputs', function (Blueprint $table) {
+        Schema::create('product_outputs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('admin_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('quantity_input');
-            $table->string('invoice_number')->nullable();
-            $table->date('date_input')->default(now());
-            $table->string('responsible')->nullable();
+            $table->integer('quantity_output');
+            $table->string('destiny');
+            $table->string('responsible_for_receiving');
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_inputs');
+        Schema::dropIfExists('product_outputs');
     }
 };

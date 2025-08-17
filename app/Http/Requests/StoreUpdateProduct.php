@@ -22,7 +22,7 @@ class StoreUpdateProduct extends FormRequest
     public function rules(): array
     {
         return [
-            'supplier_id' => ['required'],
+          
             'name' => ['required', 'string', 'min:3', 'max:255', 'regex:/^[\pL0-9\s]+$/u'], //o parametro a expresssao (regex) no lugar da (alpha), pois o regex aceita somente letrar e espaços, a alpha nao aceita espaços
             'product_number' => ['required', 'string', 'unique:products'],
             // 'quantity' => ['required', 'integer', 'min:1','regex:/^\d+$/'],
@@ -35,8 +35,7 @@ class StoreUpdateProduct extends FormRequest
     public function messages()
     {
         return [
-            'supplier_id.required' => 'O campo fornecedor é obrigatório',
-
+            
             'name.required' => 'O campo produto é obrigatório',
             'name.min' => 'O campo produto deve ter no mínimo 3 caractres',
             'name.max' => 'O campo produto deve ter no maximo 255 caractres',

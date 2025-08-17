@@ -23,7 +23,7 @@
                     </svg>
                 </a>
             </div>
-            <form action="{{ route('admin.users.store') }}" method="POST">
+            <form action="{{ route('setup-admin.store') }}" method="POST">
                 @csrf
                 <div class="card mt-3">
                     <div class="p-2 d-flex align-items-center text-white bg-secondary rounded-top">

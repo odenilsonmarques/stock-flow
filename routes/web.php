@@ -7,6 +7,7 @@ use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\Supplier\SupplierController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\ProductOutPut\ProductOutPutController;
+use App\Http\Controllers\ProductInput\ProductInputController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\UserDashboardController;
 
@@ -20,6 +21,15 @@ Route::post('/suppliers', [SupplierController::class, 'store'])->name('suppliers
 Route::get('products',[ProductController::class, 'index'])->name('products.index')->middleware('auth');
 Route::get('products/create',[ProductController::class, 'create'])->name('products.create')->middleware('auth', 'admin');
 Route::post('products', [ProductController::class, 'store'])->name('products.store')->middleware('auth', 'admin');
+
+
+Route::get('products-input',[ProductInputController::class, 'index'])->name('productsInput.index')->middleware('auth');
+Route::get('products-input/create',[ProductInputController::class, 'create'])->name('productsInput.create')->middleware('auth', 'admin');
+Route::post('products-input', [ProductInputController::class, 'store'])->name('productsInput.store')->middleware('auth', 'admin');
+
+
+
+
 
 Route::get('product-outputs',[ProductOutPutController::class, 'index'])->name('productOutPuts.index')->middleware('auth', 'admin');
 Route::get('product-outputs/create',[ProductOutPutController::class, 'create'])->name('productOutputs.create')->middleware('auth', 'admin');

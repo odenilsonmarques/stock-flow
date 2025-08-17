@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductInputs extends Model
+class ProductInput extends Model
 {
     use HasFactory;
 
-      protected $fillable = [
+    protected $fillable = [
         'product_id',
         'supplier_id',
         'admin_id',

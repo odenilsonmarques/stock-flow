@@ -26,28 +26,29 @@
                     </svg>
                 </a>
 
-                <a href="{{ route('products.create') }}" class="btn btn-secondary d-inline-flex align-items-center gap-2">
-                    <span class="text-custom-btn-users">Novo Produto</span>
+                <a href="{{ route('productsInput.create') }}"
+                    class="btn btn-secondary d-inline-flex align-items-center gap-2">
+                    <span class="text-custom-btn-users">Nova Entrada</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-grid-fill" viewBox="0 0 16 16">
+                        class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
                         <path
-                            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z" />
+                            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0" />
                     </svg>
                 </a>
             </div>
-            @if ($products->isEmpty())
+            @if ($productInputs->isEmpty())
                 <p>Nenhum produto cadastrado.</p>
             @else
                 <table class="table table-striped table-bordered table-hover caption-top">
-                    <caption>Controle de Estoque</caption>
+                    <caption>Entradas de Produtos</caption>
                     <thead class="header-table-custom">
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            {{-- <th>Fornecedor</th> --}}
+                            <th>Fornecedor</th>
                             <th>Código do Produto</th>
-                            <th>Qtd mínima</th>
-                            <th>Qtd atual</th>
+                            <th>Qtd</th>
+
 
 
                             {{-- <th>Qtd Recebida</th>
@@ -58,17 +59,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($products as $product)
+                        @foreach ($productInputs as $productInput)
                             <tr>
-                                <td>{{ $product->id }}</td>
-                                <td>{{ $product->name }}</td>
-                                {{-- <td>{{ $product->supplier->name }}</td> --}}
-                                <td>{{ $product->product_number }}</td>
-                                <td>{{ $product->minimum_quantity }}</td>
-                                {{-- <td>{{ $product->confirm_quantity }}</td> --}}
-                                <td>{{ $product->quantity }}</td>
-                                <td>{{ $product->admin->name }}</td>
-                                <td>{{ $product->created_at->format('d/m/Y') }}</td>
+                                <td>{{ $productInput->id }}</td>
+                                <td>{{ $productInput->product->name }}</td>
+                                <td>{{ $productInput->supplier->name }}</td>
+                                <td>{{ $productInput->product->product_number }}</td>
+                                <td>{{ $productInput->quantity_input }}</td>
+                                <td>{{ $productInput->admin->name }}</td>
+                                <td>{{ $productInput->created_at->format('d/m/Y') }}</td>
                                 <td>
                                     <a href="#" class="btn btn-sm">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#94AF97"

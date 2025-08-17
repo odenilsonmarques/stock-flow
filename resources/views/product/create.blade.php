@@ -36,26 +36,7 @@
                         Cadastro de Produto
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-lg-12 mb-3">
-                                <label for="name" class="form-label required">Fornecedor</label>
-                                <select name="supplier_id" id="supplier_id" class="form-select" required
-                                    title="Selecione o fornecedor">
-                                    <option value="" {{ old('supplier_id') == '' ? 'selected' : '' }}>Selecione
-                                    </option>
-                                    @foreach ($suppliers as $supplier)
-                                        <option value="{{ $supplier->id }}"
-                                            {{ old('supplier_id') == $supplier->id ? 'selected' : '' }}>
-                                            {{ $supplier->name }}</option>
-                                    @endforeach
-                                </select>
-
-                                @error('supplier_id')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-
+                        
                         <div class="row">
                             <div class="col-lg mb-3">
                                 <label for="name" class="form-label required">Nome do produto</label>
@@ -83,27 +64,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-
-
-                            {{-- <div class="col-lg mb-3">
-                                <label for="quantity" class="form-label required">Quantidade</label>
-                                <input type="number" name="quantity" id="quantity" class="form-control"
-                                    title="Informe a quantidade" placeholder="Digite aqui"   value="{{ old('quantity') }}"
-                                    required>
-                                @error('quantity')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="col-lg mb-3">
-                                <label for="confirm_quantity" class="form-label required">Confirme a quantidade</label>
-                                <input type="number" name="confirm_quantity" id="confirm_quantity" class="form-control"
-                                    title="Confirme a quantidade" placeholder="Digite aqui"
-                                    value="{{ old('confirm_quantity') }}" required>
-                                @error('confirm_quantity')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div> --}}
 
                             <div class="col-lg mb-3">
                                 <label for="minimum_quantity" class="form-label required">Quantidade Mínima</label>

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductOutPuts extends Model
+class ProductOutput extends Model
 {
     use HasFactory;
 
@@ -25,5 +25,4 @@ class ProductOutPuts extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
 }

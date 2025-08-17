@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supplier_id')->constrained('suppliers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('admin_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->uuid('uuid')->unique();
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('product_number')->unique();
             $table->integer('minimum_quantity')->default(0);
+            $table->integer('quantity')->default(0); // saldo atual em estoque
             $table->timestamps();
         });
     }

@@ -25,9 +25,10 @@ class Supplier extends Model
         
     ];
 
-    public function products()
+  
+    public function productInputs()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(ProductInput::class);
     }
 
     public function admin()
