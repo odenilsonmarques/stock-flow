@@ -66,7 +66,28 @@
                                 <td>{{ $product->product_number }}</td>
                                 <td>{{ $product->minimum_quantity }}</td>
                                 {{-- <td>{{ $product->confirm_quantity }}</td> --}}
-                                <td>{{ $product->quantity }}</td>
+
+                                <td>
+                                    {{ $product->quantity }}
+
+                                    @if ($product->quantity < $product->minimum_quantity)
+                                        <span class="badge bg-danger ms-2">
+                                            ⚠️ Abaixo do mínimo
+                                        </span>
+
+                                    @elseif ($product->quantity == $product->minimum_quantity)
+                                        <span class="badge bg-warning ms-2">
+                                            Atenção: Mínimo atingido
+                                        </span>
+                                    @endif
+                                </td>
+
+
+
+
+
+
+
                                 <td>{{ $product->admin->name }}</td>
                                 <td>{{ $product->created_at->format('d/m/Y') }}</td>
                                 <td>
