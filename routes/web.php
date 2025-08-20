@@ -25,7 +25,7 @@ Route::get('products/create',[ProductController::class, 'create'])->name('produc
 Route::post('products', [ProductController::class, 'store'])->name('products.store')->middleware('auth', 'admin');
 
 
-Route::get('products-input',[ProductInputController::class, 'index'])->name('productsInput.index')->middleware('auth');
+Route::get('products-input',[ProductInputController::class, 'index'])->name('productsInput.index')->middleware('auth', 'admin');
 Route::get('products-input/create',[ProductInputController::class, 'create'])->name('productsInput.create')->middleware('auth', 'admin');
 Route::post('products-input', [ProductInputController::class, 'store'])->name('productsInput.store')->middleware('auth', 'admin');
 

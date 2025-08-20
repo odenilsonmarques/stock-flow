@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductInput; // Assuming you have a ProductInput model
 use App\Models\Product; // Assuming you have a Products model
 use App\Models\Supplier; // Assuming you have a Supplier model
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUpdateProductInput; // Importing the request class for validation
 
 class ProductInputController extends Controller
 {
@@ -35,20 +37,9 @@ class ProductInputController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUpdateProductInput $request)
     {
-        // dd($request->all()); // Debugging line to check the request data
-        // Validação
-        $validated = $request->validate([
-            'product_id'      => 'required|exists:products,id',
-            'supplier_id'     => 'required|exists:suppliers,id',
-            'quantity_input'  => 'required|integer|min:1',
-            'invoice_number'  => 'nullable|string|max:255',
-            'date_input'      => 'required|date',
-        ]);
-
-        // dd($validated); // Debugging line to check the validated data
-        // Criando a entrada no banco
+        $validated = $request->validated();
         ProductInput::create([
             'product_id'     => $validated['product_id'],
             'supplier_id'    => $validated['supplier_id'],
