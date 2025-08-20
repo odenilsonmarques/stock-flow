@@ -43,15 +43,15 @@ class StoreUpdateSupplier extends FormRequest
     {
         return [
             'name' => [
-                'required', 
-                'string', 
-                'min:3', 
-                'max:255', 
+                'required',
+                'string',
+                'min:3',
+                'max:255',
                 'unique:suppliers'
             ],
 
             'type_supplier' => [
-                'required', 
+                'required',
                 'string'
             ],
             // aplicando função anonima para validação devido a regras específicas
@@ -60,21 +60,35 @@ class StoreUpdateSupplier extends FormRequest
                 'string',
                 'unique:suppliers,cpf_cnpj',
                 function ($attribute, $value, $fail) {
-                    // Remove tudo que não for número
                     $numbers = preg_replace('/\D/', '', $value);
 
-                    // Verifica se tem 11 ou 14 dígitos
+                    // CPF = 11 dígitos | CNPJ = 14 dígitos
                     if (!in_array(strlen($numbers), [11, 14])) {
-                        $fail('O campo CPF/CNPJ deve conter 11 ou 14 dígitos numéricos.');
+                        return $fail('O campo CPF/CNPJ deve conter 11 ou 14 dígitos numéricos.');
+                    }
+
+                    // Validação de CPF
+                    if (strlen($numbers) === 11) {
+                        if (!self::validaCpf($numbers)) {
+                            return $fail('CPF inválido.');
+                        }
+                    }
+
+                    // Validação de CNPJ
+                    if (strlen($numbers) === 14) {
+                        if (!self::validaCnpj($numbers)) {
+                            return $fail('CNPJ inválido.');
+                        }
                     }
                 },
             ],
 
+
             'email' => [
-                'required', 
-                'string', 
-                'email', 
-                'max:255', 
+                'required',
+                'string',
+                'email',
+                'max:255',
                 'unique:suppliers'
             ],
 
@@ -85,41 +99,91 @@ class StoreUpdateSupplier extends FormRequest
             ],
 
             'address' => [
-                'required', 
-                'string', 
+                'required',
+                'string',
                 'max:225'
             ],
 
             'number' => [
-                'nullable', 
-                'string', 
+                'nullable',
+                'string',
                 'max:5'
             ],
 
             'city' => [
-                'required', 
-                'string', 
+                'required',
+                'string',
                 'max:100'
             ],
 
             'district' => [
-                'required', 
-                'string', 
+                'required',
+                'string',
                 'max:100'
             ],
             'state' => [
-                'required', 
-                'string', 
+                'required',
+                'string',
                 'max:100'
             ],
             // nesse caso usei o digits:8 para garantir que o CEP tenha 8 dígitos,
             // isso tmb foi possivel devido a limpeza do campo zip_code no codigo acima usando regex
             'zip_code' => [
-                'nullable', 
+                'nullable',
                 'digits:8'
             ],
         ];
     }
+
+    protected static function validaCpf($cpf)
+    {
+        // CPFs inválidos conhecidos
+        if (preg_match('/(\d)\1{10}/', $cpf)) return false;
+
+        for ($t = 9; $t < 11; $t++) {
+            $d = 0;
+            for ($c = 0; $c < $t; $c++) {
+                $d += $cpf[$c] * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($cpf[$c] != $d) return false;
+        }
+        return true;
+    }
+
+
+    // metodos auxiliares 
+    protected static function validaCnpj($cnpj)
+    {
+        if (preg_match('/(\d)\1{13}/', $cnpj)) return false;
+
+        $tamanho = strlen($cnpj) - 2;
+        $numeros = substr($cnpj, 0, $tamanho);
+        $digitos = substr($cnpj, $tamanho);
+        $soma = 0;
+        $pos = $tamanho - 7;
+
+        for ($i = $tamanho; $i >= 1; $i--) {
+            $soma += $numeros[$tamanho - $i] * $pos--;
+            if ($pos < 2) $pos = 9;
+        }
+        $resultado = $soma % 11 < 2 ? 0 : 11 - ($soma % 11);
+        if ($resultado != $digitos[0]) return false;
+
+        $tamanho++;
+        $numeros = substr($cnpj, 0, $tamanho);
+        $soma = 0;
+        $pos = $tamanho - 7;
+        for ($i = $tamanho; $i >= 1; $i--) {
+            $soma += $numeros[$tamanho - $i] * $pos--;
+            if ($pos < 2) $pos = 9;
+        }
+        $resultado = $soma % 11 < 2 ? 0 : 11 - ($soma % 11);
+        if ($resultado != $digitos[1]) return false;
+
+        return true;
+    }
+
 
     public function messages()
     {
