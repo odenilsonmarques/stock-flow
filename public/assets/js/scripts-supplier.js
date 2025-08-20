@@ -127,3 +127,21 @@ document.addEventListener('DOMContentLoaded', function () {
         phoneInput.value = value;
     });
 });
+
+
+
+
+// validação de CEP com máscara
+document.addEventListener('DOMContentLoaded', function () {
+    const cepInput = document.getElementById('zip_code');
+
+    cepInput.addEventListener('input', function () {
+        let value = this.value.replace(/\D/g, ''); // remove tudo que não é número
+
+        if (value.length > 5) {
+            value = value.replace(/^(\d{5})(\d{0,3})$/, '$1-$2'); // XXXXX-XXX
+        }
+
+        this.value = value;
+    });
+});

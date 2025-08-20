@@ -16,7 +16,6 @@ class ProductInput extends Model
         'quantity_input',
         'invoice_number',
         'date_input',
-        'responsible',
     ];
 
 

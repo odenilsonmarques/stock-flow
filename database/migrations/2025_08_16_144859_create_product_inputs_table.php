@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer('quantity_input');
             $table->string('invoice_number')->nullable();
             $table->date('date_input');
-            $table->string('responsible')->nullable();
             $table->timestamps();
         });
     }

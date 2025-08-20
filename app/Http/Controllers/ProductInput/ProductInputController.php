@@ -45,7 +45,6 @@ class ProductInputController extends Controller
             'quantity_input'  => 'required|integer|min:1',
             'invoice_number'  => 'nullable|string|max:255',
             'date_input'      => 'required|date',
-            'responsible'     => 'nullable|string|max:255',
         ]);
 
         // dd($validated); // Debugging line to check the validated data
@@ -57,7 +56,6 @@ class ProductInputController extends Controller
             'quantity_input' => $validated['quantity_input'],
             'invoice_number' => $validated['invoice_number'] ?? null,
             'date_input'     => $validated['date_input'],
-            'responsible'    => $validated['responsible'],
         ]);
 
         // Atualizando a quantidade do produto

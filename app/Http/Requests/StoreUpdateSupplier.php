@@ -15,6 +15,25 @@ class StoreUpdateSupplier extends FormRequest
         return true;
     }
 
+
+    // Aqui aplicamos uma lógica para preparar os dados antes da validação, se necessário
+    // Por exemplo, remover espaços em branco extras ou formatar campos específicos
+    protected function prepareForValidation()
+    {
+        // Verifica se o campo zip_code existe e aplica a remoção de caracteres não numéricos
+        if ($this->has('zip_code')) {
+            $this->merge([
+                'zip_code' => preg_replace('/\D/', '', $this->zip_code),
+            ]);
+        }
+
+        // aplica a remoção de caracteres não numéricos
+        $this->merge([
+            'cpf_cnpj' => preg_replace('/\D/', '', $this->cpf_cnpj),
+            'phone' => preg_replace('/\D/', '', $this->phone),
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -23,17 +42,82 @@ class StoreUpdateSupplier extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'min:3', 'max:255', 'unique:suppliers'],
-            'type_supplier' => ['required', 'string'],
-            'cpf_cnpj' => ['required', 'string', 'unique:suppliers'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:suppliers'],
-            'phone' => ['required', 'string', 'unique:suppliers'],
-            'address' => ['required', 'string', 'max:225'],
-            'number' => ['nullable', 'string', 'max:5'],
-            'city' => ['required', 'string', 'max:100'],
-            'district' => ['required', 'string', 'max:100'],
-            'state' => ['required', 'string', 'max:100'],
-            'zip_code' => ['nullable', 'string', 'max:8'],
+            'name' => [
+                'required', 
+                'string', 
+                'min:3', 
+                'max:255', 
+                'unique:suppliers'
+            ],
+
+            'type_supplier' => [
+                'required', 
+                'string'
+            ],
+            // aplicando função anonima para validação devido a regras específicas
+            'cpf_cnpj' => [
+                'required',
+                'string',
+                'unique:suppliers,cpf_cnpj',
+                function ($attribute, $value, $fail) {
+                    // Remove tudo que não for número
+                    $numbers = preg_replace('/\D/', '', $value);
+
+                    // Verifica se tem 11 ou 14 dígitos
+                    if (!in_array(strlen($numbers), [11, 14])) {
+                        $fail('O campo CPF/CNPJ deve conter 11 ou 14 dígitos numéricos.');
+                    }
+                },
+            ],
+
+            'email' => [
+                'required', 
+                'string', 
+                'email', 
+                'max:255', 
+                'unique:suppliers'
+            ],
+
+            'phone' => [
+                'required',
+                'digits_between:10,11', // aceita 10 ou 11 dígitos
+                'unique:suppliers,phone',
+            ],
+
+            'address' => [
+                'required', 
+                'string', 
+                'max:225'
+            ],
+
+            'number' => [
+                'nullable', 
+                'string', 
+                'max:5'
+            ],
+
+            'city' => [
+                'required', 
+                'string', 
+                'max:100'
+            ],
+
+            'district' => [
+                'required', 
+                'string', 
+                'max:100'
+            ],
+            'state' => [
+                'required', 
+                'string', 
+                'max:100'
+            ],
+            // nesse caso usei o digits:8 para garantir que o CEP tenha 8 dígitos,
+            // isso tmb foi possivel devido a limpeza do campo zip_code no codigo acima usando regex
+            'zip_code' => [
+                'nullable', 
+                'digits:8'
+            ],
         ];
     }
 

@@ -13,11 +13,13 @@ use App\Http\Controllers\User\UserDashboardController;
 
 Route::get('/',[SiteController::class, 'index'])->name('site.index');
 
+// Rotas para fornecedores
 Route::get('/suppliers', [SupplierController::class, 'index'])->name('suppliers.index')->middleware('auth', 'admin');
 Route::get('/suppliers/create', [SupplierController::class, 'create'])->name('suppliers.create')->middleware('auth', 'admin');
 Route::post('/suppliers', [SupplierController::class, 'store'])->name('suppliers.store')->middleware('auth', 'admin');
 
 
+// Rotas para produtos
 Route::get('products',[ProductController::class, 'index'])->name('products.index')->middleware('auth');
 Route::get('products/create',[ProductController::class, 'create'])->name('products.create')->middleware('auth', 'admin');
 Route::post('products', [ProductController::class, 'store'])->name('products.store')->middleware('auth', 'admin');

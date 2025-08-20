@@ -21,8 +21,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        $suppliers = Supplier::orderBy('name')->get();
-        return view('product.create', compact('suppliers'));
+        return view('product.create');
     }
 
     public function store(StoreUpdateProduct $request)

@@ -100,17 +100,7 @@
                                 @error('invoice_number')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
-
-                            {{-- Responsável pelo recebimento --}}
-                            <div class="col-lg-6">
-                                <label for="responsible" class="form-label">Responsável pelo Recebimento</label>
-                                <input type="text" name="responsible" id="responsible" class="form-control"
-                                    placeholder="Ex: João da Silva" value="{{ old('responsible') }}">
-                                @error('responsible')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+                            </div>   
                         </div>
 
                     </div>

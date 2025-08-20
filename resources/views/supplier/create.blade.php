@@ -66,8 +66,7 @@
                             <div class="col-lg mb-3">
                                 <label for="cpf_cnpj" class="form-label required">Número do documento</label>
                                 <input type="text" name="cpf_cnpj" id="cpf_cnpj" class="form-control" required
-                                    title="Informe o CPF ou CNPJ" value="{{ old('cpf_cnpj') }}" placeholder=""
-                                    title="Informe o CPF ou CNPJ" disabled>
+                                    value="{{ old('cpf_cnpj') }}" placeholder="Informe o CPF ou CNPJ" disabled>
                                 @error('cpf_cnpj')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
@@ -111,7 +110,7 @@
                         <div class="row">
                             <div class="col-lg-4 mb-3">
                                 <label for="zip_code" class="form-label">Cep</label>
-                                <input type="text" name="zip_code" id="zip_code" class="form-control"
+                                <input type="text" name="zip_code" id="zip_code" maxlength="9" class="form-control"
                                     title="Informe o CEP" value="{{ old('zip_code') }}" placeholder="Digite aqui"
                                     title="Informe o CEP">
                                 @error('zip_code')
