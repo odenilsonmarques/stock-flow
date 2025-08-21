@@ -16,7 +16,7 @@
                 </a>
                 <a href="{{ route('productOutPuts.index') }}"
                     class="btn btn-secondary d-inline-flex align-items-center gap-2">
-                    <span class="text-custom-btn-users">Produtos entregues</span>
+                    <span class="text-custom-btn-users">Saídas</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                         class="bi bi-box-seam-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -49,14 +49,11 @@
                                             {{ $product->name }}</option>
                                     @endforeach
                                 </select>
-
                                 @error('product_id')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-
-
 
                         <div class="row">
                             <div class="col-lg mb-3">
@@ -80,15 +77,15 @@
                             </div>
 
                             <div class="col-lg mb-3">
-                                <label for="responsible_for_receiving" class="form-label required">Responsável po receber</label>
-                                        <input type="text" name="responsible_for_receiving"
-                                            id="responsible_for_receiving" class="form-control"
-                                            title="Informe o nome do responsável pelo recebimento" placeholder="Digite aqui"
-                                            value="{{ old('responsible_for_receiving') }}" required>
+                                <label for="responsible_for_receiving" class="form-label required">Responsável po
+                                    receber</label>
+                                <input type="text" name="responsible_for_receiving" id="responsible_for_receiving"
+                                    class="form-control" title="Informe o nome do responsável pelo recebimento"
+                                    placeholder="Digite aqui" value="{{ old('responsible_for_receiving') }}" required>
 
-                                        @error('responsible_for_receiving')
-                                            <div class="text-danger">{{ $message }}</div>
-                                        @enderror
+                                @error('responsible_for_receiving')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
@@ -96,7 +93,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 mt-3">
-                        <button class="btn btn-danger"><a href="#">CANCELAR</a></button>
+                        <button class="btn btn-danger"><a href="{{ route('productOutPuts.index') }}">CANCELAR</a></button>
                         <button type="submit" class="btn btn-success">CADASTRAR</button>
                     </div>
                 </div>

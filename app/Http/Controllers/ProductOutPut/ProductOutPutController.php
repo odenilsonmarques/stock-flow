@@ -26,11 +26,10 @@ class ProductOutPutController extends Controller
 
     public function store(StoreUpdateProductOutPut $request)
     {
-        $data = $request->validated(); // já validado e seguro
+        $data = $request->validated(); 
 
         // Pega o produto do banco
         $product = Product::findOrFail($data['product_id']);
-
         // Atualiza o estoque
         $product->quantity -= $data['quantity_output'];
         $product->save();
@@ -38,7 +37,7 @@ class ProductOutPutController extends Controller
         // Registra a saída
         ProductOutPut::create([
             'product_id' => $product->id,
-            'admin_id' => Auth::id(), // pega o usuário logado
+            'admin_id' => Auth::id(), 
             'quantity_output' => $data['quantity_output'],
             'destiny' => $data['destiny'],
             'responsible_for_receiving' => $data['responsible_for_receiving'],

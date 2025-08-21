@@ -97,7 +97,6 @@
                     </div>
                 </div>
 
-
                 <div class="card mt-2">
                     <div class="card-header d-flex align-items-center text-white bg-secondary rounded-top">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
@@ -174,7 +173,7 @@
 
                 <div class="row">
                     <div class="col-lg-12 mt-3">
-                        <button class="btn btn-danger"><a href="#">CANCELAR</a></button>
+                        <button class="btn btn-danger"><a href="{{ route('suppliers.index') }}">CANCELAR</a></button>
                         <button type="submit" class="btn btn-success">CADASTRAR</button>
                     </div>
                 </div>

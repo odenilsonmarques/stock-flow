@@ -36,7 +36,7 @@
                         Cadastro de Produto
                     </div>
                     <div class="card-body">
-                        
+
                         <div class="row">
                             <div class="col-lg mb-3">
                                 <label for="name" class="form-label required">Nome do produto</label>
@@ -46,8 +46,6 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-
-
                         </div>
 
                         <div class="row">
@@ -91,7 +89,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 mt-3">
-                        <button class="btn btn-danger"><a href="#">CANCELAR</a></button>
+                        <button class="btn btn-danger"><a href="{{ route('products.index') }}">CANCELAR</a></button>
                         <button type="submit" class="btn btn-success" id="submitBtn">CADASTRAR</button>
                     </div>
                 </div>
