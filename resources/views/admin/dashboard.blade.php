@@ -16,85 +16,123 @@
         @endphp
         <h6 class="text-center">{{ $mensagem }}, {{ date('d/m/Y') }}</h6>
 
+        <div class="container mt-5">
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="row text-center">
+                        <!-- Fornecedores -->
+                        <div class="col-12 col-md mb-3">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <h6 class="card-title">Fornecedores</h6>
+                                    <h3 class="fw-bold text-primary">{{ $suppliersQuantity }}</h3>
+                                    <small>Total cadastrados</small>
+                                </div>
 
-        <div class="row mt-3">
-            <div class="col-lg-12">
-                <div class="row text-center justify-content-center">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card ">
-                        <div class="card border-0">
-                            <div class="card-body ">
-                                <h6 class="card-title">Fornecedores</h6>
-                                <button data-bs-toggle="modal" data-bs-target="#productsModal" type="button"
-                                    class="btn btn-outline-secondary bg-secondary text-white mt-3">
-                                    Ver detalhes <span
-                                        class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $suppliersQuantity }}</span>
-                                </button>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card-body ">
-                            <h6 class="card-title">Produtos com estoque zerado</h6>
-                            <button data-bs-toggle="modal" data-bs-target="#productsModal" type="button"
-                                class="btn btn-outline-secondary bg-secondary text-white mt-3">
-                                Ver detalhes <span
-                                    class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $zeroStockProducts }}</span>
-                            </button>
+                        <!-- Produtos com Estoque Zerado -->
+                        <div class="col-12 col-md mb-3">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <h6 class="card-title">Estoque Zerado</h6>
+                                    <h3 class="fw-bold text-danger">{{ $zeroStockProducts }}</h3>
+                                    <small>Produtos sem estoque</small>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
-                  
 
-                   <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                       <div class="card-body ">
-                           <h6 class="card-title">Produtos Disponiveis</h6>
-                           <button data-bs-toggle="modal" data-bs-target="#productsModal" type="button"
-                               class="btn btn-outline-secondary bg-secondary text-white mt-3">
-                               Ver detalhes <span
-                                   class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $availableProducts }}</span>
-                           </button>
-                       </div>
-                   </div>
-
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card-body ">
-                            <h6 class="card-title">Produtos com quantidade minima</h6>
-                            <button data-bs-toggle="modal" data-bs-target="#productsModal" type="button"
-                                class="btn btn-outline-secondary bg-secondary text-white mt-3">
-                                Ver detalhes <span
-                                    class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $minimumStockProducts }}</span>
-                            </button>
+                        <!-- Produtos disponíveis  -->
+                        <div class="col-12 col-md mb-3">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <h6 class="card-title">Disponíveis</h6>
+                                    <h3 class="fw-bold text-success">{{ $availableProducts }}</h3>
+                                    <small>Produtos com estoque</small>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card-body ">
-                            <h6 class="card-title">Produtos abaixo da quantidade minima</h6>
-                            <button data-bs-toggle="modal" data-bs-target="#productsModal" type="button"
-                                class="btn btn-outline-secondary bg-secondary text-white mt-3">
-                                Ver detalhes <span
-                                    class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $belowMinimumStockProducts }}</span>
-                            </button>
+                        <!-- Produtos com Qtd. mínima -->
+                        <div class="col-12 col-md mb-3">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <h6 class="card-title">Qtd. mínima</h6>
+                                    <h3 class="fw-bold text-warning">{{ $minimumStockProducts }}</h3>
+                                    <small>Produtos com Qtd mínima</small>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Produtos com estoque zerado</h6>
-                                <a href="#" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#productsWithZeroStockModal"></a>
+                        <!-- Produtos abaixo do Qtd. mínima -->
+                        <div class="col-12 col-md mb-3">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body">
+                                    <h6 class="card-title">Abaixo do mínimo</h6>
+                                    <h3 class="fw-bold text-dark">{{ $belowMinimumStockProducts }}</h3>
+                                    <small>Produtos Críticos</small>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- gráfico -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 class="mb-3 text-center">Visão geral</h6>
+                            <div style="height: 300px;"> {{-- 🔹 altura fixa evita scroll infinito --}}
+                                <canvas id="stockChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="{{ asset('assets/js/chart.umd.min.js') }}"></script>
+            <script>
+                const ctx = document.getElementById('stockChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Disponíveis', 'Zerados', 'Mínimo', 'Abaixo do mínimo'],
+                        datasets: [{
+                            label: 'Produtos',
+                            data: [
+                                {{ $availableProducts }},
+                                {{ $zeroStockProducts }},
+                                {{ $minimumStockProducts }},
+                                {{ $belowMinimumStockProducts }}
+                            ],
+                            backgroundColor: ['#198754', '#dc3545', '#ffc107', '#6c757d'],
+                            borderRadius: 6,
+                            barThickness: 40
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false, // mantém responsivo dentro da div
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
         </div>
-
-
-
     @endsection
 
 
