@@ -12,7 +12,6 @@
                 </div>
             @endif
 
-
             <div class="col-lg-12 mt-5 justify-content-end d-flex ">
                 <a href="{{ route('admin.dashboard') }}"
                     class="btn btn-secondary d-inline-flex align-items-center gap-2 me-2">
@@ -38,20 +37,36 @@
             @if ($products->isEmpty())
                 <p>Nenhum produto cadastrado.</p>
             @else
+                {{-- fomulario de busca --}}
+                <form method="GET" action="{{ route('products.index') }}" class="row g-2 mb-3">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control"
+                                placeholder="Buscar por nome ou número" value="{{ request('search') }}">
+                            <button type="submit"
+                                class="btn btn-secondary d-flex align-items-center justify-content-center px-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a href="{{ route('products.index') }}" class="btn btn-secondary ">Limpar</a>
+                    </div>
+                </form>
+
                 <table class="table table-striped table-bordered table-hover caption-top">
-                    <caption>Controle de Estoque</caption>
                     <thead class="header-table-custom">
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            {{-- <th>Fornecedor</th> --}}
                             <th>Código do Produto</th>
                             <th>Qtd mínima</th>
                             <th>Qtd atual</th>
-
-
-                            {{-- <th>Qtd Recebida</th>
-                            <th>Qtd estoque</th> --}}
                             <th>Registrado por</th>
                             <th>Data</th>
                             <th>Ações</th>
@@ -62,11 +77,8 @@
                             <tr>
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
-                                {{-- <td>{{ $product->supplier->name }}</td> --}}
                                 <td>{{ $product->product_number }}</td>
                                 <td>{{ $product->minimum_quantity }}</td>
-                                {{-- <td>{{ $product->confirm_quantity }}</td> --}}
-
                                 <td>
                                     {{ $product->quantity }}
 
@@ -74,20 +86,12 @@
                                         <span class="badge bg-danger ms-2">
                                             ⚠️ Abaixo do mínimo
                                         </span>
-
                                     @elseif ($product->quantity == $product->minimum_quantity)
                                         <span class="badge bg-warning ms-2">
                                             Atenção: Mínimo atingido
                                         </span>
                                     @endif
                                 </td>
-
-
-
-
-
-
-
                                 <td>{{ $product->admin->name }}</td>
                                 <td>{{ $product->created_at->format('d/m/Y') }}</td>
                                 <td>
@@ -118,6 +122,10 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{-- paginação --}}
+                <div class="d-flex justify-content-end">
+                    {{ $products->links() }}
+                </div>
             @endif
         </div>
     </div>

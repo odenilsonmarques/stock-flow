@@ -71,7 +71,7 @@
                                 <div class="card-body">
                                     <h6 class="card-title">Abaixo do mínimo</h6>
                                     <h3 class="fw-bold text-dark">{{ $belowMinimumStockProducts }}</h3>
-                                    <small>Produtos Críticos</small>
+                                    <small>Produtos críticos</small>
                                 </div>
                             </div>
                         </div>

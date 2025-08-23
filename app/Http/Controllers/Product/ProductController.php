@@ -12,12 +12,31 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    //list all products
-    public function index()
+    // Listar todos os produtos
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('product.index', compact('products',));
+        // Pega o valor digitado no campo de busca (se houver)
+        $search = $request->input('search');
+
+        // Monta a query base para buscar os produtos, como foi definido no modelo
+        $products = Product::query()
+            // Se $search não for vazio, aplica o filtro:
+            // busca pelo nome OU pelo número do produto
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('product_number', 'like', "%{$search}%");
+            })
+            // Ordena os resultados pelo ID (do mais novo para o mais antigo)
+            ->orderBy('id', 'desc')
+            // Paginação: exibe 4 registros por página
+            ->paginate(4);
+
+        // Mantém os filtros na paginação (para não perder o termo de busca ao navegar entre páginas)
+        $products->appends(request()->all());
+
+        return view('product.index', compact('products'));
     }
+
 
     public function create()
     {

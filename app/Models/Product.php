@@ -19,6 +19,23 @@ class Product extends Model
         'quantity',         // saldo atual em estoque
     ];
 
+    //scopes para filtrar produtos pelo nome e número
+    public function scopeFilterName($query, $name)
+    {
+        if ($name) {
+            return $query->where('name', 'like', '%' . $name . '%');
+        }
+    }
+
+    public function scopeFilterNumber($query, $number)
+    {
+        if ($number) {
+            return $query->where('product_number', 'like', '%' . $number . '%');
+        }
+    }
+
+
+    // metodos para relacionamentos
     public function productOutPuts()
     {
         return $this->hasMany(ProductOutPut::class);
