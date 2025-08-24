@@ -22,10 +22,27 @@ class Supplier extends Model
         'state',
         'zip_code',
         'admin_id',
-        
+
     ];
 
-  
+    //scopes para filtrar fornecedores pelo nome e número do documento
+    public function scopeFilterName($query, $name)
+    {
+        // Aplica o filtro apenas se houver valor informado no campo de busca.
+        // Caso contrário, a query segue sem alteração.
+        if ($name) {
+            return $query->where('name', 'like', '%' . $name . '%');
+        }
+    }
+
+    public function scopeFilterCpfCnpj($query, $numberDocument)
+    {
+        if ($numberDocument) {
+            return $query->where('cpf_cnpj', 'like', '%' . $numberDocument . '%');
+        }
+    }
+
+    // metodos para relacionamentos
     public function productInputs()
     {
         return $this->hasMany(ProductInput::class);

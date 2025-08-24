@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <div class="row mt-5">
-
+            {{-- mensagem de sucesso --}}
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show text-center mt-5" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -12,6 +12,7 @@
                 </div>
             @endif
 
+            {{-- botões de ação --}}
             <div class="col-lg-12 mt-5 justify-content-end d-flex ">
                 <a href="{{ route('admin.dashboard') }}"
                     class="btn btn-secondary d-inline-flex align-items-center gap-2 me-2">
@@ -24,7 +25,6 @@
                             d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.95 11.95 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0" />
                     </svg>
                 </a>
-
                 <a href="{{ route('products.create') }}" class="btn btn-secondary d-inline-flex align-items-center gap-2">
                     <span class="text-custom-btn-users">Novo Produto</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -34,15 +34,24 @@
                     </svg>
                 </a>
             </div>
+
+            {{-- condição para quando não houver produtos cadastrados --}}
             @if ($products->isEmpty())
-                <p>Nenhum produto cadastrado.</p>
+                <div class="alert alert-info d-flex flex-column align-items-center py-4 mt-3">
+                    <p class="mb-3">Produto não encontrado.</p>
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('products.index') }}" class="btn btn-secondary">
+                            Voltar para controle de estoque
+                        </a>
+                    </div>
+                </div>
             @else
                 {{-- fomulario de busca --}}
                 <form method="GET" action="{{ route('products.index') }}" class="row g-2 mb-3">
                     <div class="col-md-4">
                         <div class="input-group">
                             <input type="text" name="search" class="form-control"
-                                placeholder="Buscar por nome ou número" value="{{ request('search') }}">
+                                placeholder="Buscar produto por nome ou número" value="{{ request('search') }}">
                             <button type="submit"
                                 class="btn btn-secondary d-flex align-items-center justify-content-center px-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -53,13 +62,14 @@
                             </button>
                         </div>
                     </div>
-
                     <div class="col-md-2">
                         <a href="{{ route('products.index') }}" class="btn btn-secondary ">Limpar</a>
                     </div>
                 </form>
 
-                <table class="table table-striped table-bordered table-hover caption-top">
+                {{-- tabela de produtos --}}
+                <table class="table table-striped table-bordered table-hover">
+                    <caption>Controle de Estoque</caption>
                     <thead class="header-table-custom">
                         <tr>
                             <th>#</th>
@@ -123,8 +133,8 @@
                     </tbody>
                 </table>
                 {{-- paginação --}}
-                <div class="d-flex justify-content-end">
-                    {{ $products->links() }}
+                <div class="d-flex justify-content-end pagination pagination-sm">
+                    {{ $products->links('pagination::bootstrap-4') }}
                 </div>
             @endif
         </div>

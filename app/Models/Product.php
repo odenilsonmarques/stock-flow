@@ -22,6 +22,8 @@ class Product extends Model
     //scopes para filtrar produtos pelo nome e número
     public function scopeFilterName($query, $name)
     {
+        // Aplica o filtro apenas se houver valor informado no campo de busca.
+        // Caso contrário, a query segue sem alteração.
         if ($name) {
             return $query->where('name', 'like', '%' . $name . '%');
         }

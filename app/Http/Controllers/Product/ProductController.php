@@ -29,7 +29,7 @@ class ProductController extends Controller
             // Ordena os resultados pelo ID (do mais novo para o mais antigo)
             ->orderBy('id', 'desc')
             // Paginação: exibe 4 registros por página
-            ->paginate(4);
+            ->paginate(5);
 
         // Mantém os filtros na paginação (para não perder o termo de busca ao navegar entre páginas)
         $products->appends(request()->all());

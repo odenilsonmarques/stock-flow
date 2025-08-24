@@ -14,9 +14,27 @@ class SupplierController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $suppliers = Supplier::all();
+        // Pega o valor digitado no campo de busca (se houver)
+        $search = $request->input('search');
+
+        // Monta a query base para buscar os fornecedores, como foi definido no modelo
+        $suppliers = Supplier::query()
+            // Se $search não for vazio, aplica o filtro:
+            // busca pelo nome OU pelo número do documento
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('cpf_cnpj', 'like', "%{$search}%");
+            })
+            // Ordena os resultados pelo ID (do mais novo para o mais antigo)
+            ->orderBy('id', 'desc')
+            // Paginação: exibe 4 registros por página
+            ->paginate(5);
+
+        // Mantém os filtros na paginação (para não perder o termo de busca ao navegar entre páginas)
+        $suppliers->appends(request()->all());
+
         return view('supplier.index', compact('suppliers'));
     }
 
