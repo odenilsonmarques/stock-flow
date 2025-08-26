@@ -12,9 +12,18 @@ use App\Http\Requests\StoreUpdateProductOutPut;
 
 class ProductOutPutController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $productOutPuts = ProductOutput::all();
+        // Recupera o termo digitado no campo de busca (se houver)
+        $search = $request->input('search');
+
+        // Monta a query base para buscar de produtos
+        $productOutPuts = ProductOutput::query()
+            ->filterBySearch($search) // aplica o filtro centralizado no Model
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
+        $productOutPuts->appends(request()->all());
         return view('productOutPut.index', compact('productOutPuts'));
     }
 
@@ -26,7 +35,7 @@ class ProductOutPutController extends Controller
 
     public function store(StoreUpdateProductOutPut $request)
     {
-        $data = $request->validated(); 
+        $data = $request->validated();
 
         // Pega o produto do banco
         $product = Product::findOrFail($data['product_id']);
@@ -37,7 +46,7 @@ class ProductOutPutController extends Controller
         // Registra a saída
         ProductOutPut::create([
             'product_id' => $product->id,
-            'admin_id' => Auth::id(), 
+            'admin_id' => Auth::id(),
             'quantity_output' => $data['quantity_output'],
             'destiny' => $data['destiny'],
             'responsible_for_receiving' => $data['responsible_for_receiving'],

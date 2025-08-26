@@ -16,10 +16,20 @@ class ProductInputController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productInputs = ProductInput::all(); // Assuming you have a ProductInput model
-        // dd($productInputs); // Debugging line to check the data
+        // Recupera o termo digitado no campo de busca (se houver)
+        $search = $request->input('search');
+        // Monta a query base para buscar as entradas de produtos
+        $productInputs = ProductInput::query()
+            ->filterBySearch($search) // aplica o filtro centralizado no Model
+            ->orderBy('id', 'desc')   // ordena do mais recente para o mais antigo
+            ->paginate(5);            // paginação de 5 registros por página
+
+        // Mantém o termo de busca na paginação
+        $productInputs->appends(request()->all());
+
+        // Retorna a view com os dados
         return view('productInput.index', compact('productInputs'));
     }
 

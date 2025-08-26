@@ -4,12 +4,15 @@
 @section('content')
     <div class="container">
         <div class="row mt-5">
+            {{-- mensagem de sucesso --}}
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show text-center mt-5" role="alert">
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     {{ session('success') }}
                 </div>
             @endif
+
+            {{-- botões de ação --}}
             <div class="col-lg-12 mt-5 justify-content-end d-flex ">
                 <a href="{{ route('admin.dashboard') }}"
                     class="btn btn-secondary d-inline-flex align-items-center gap-2 me-2">
@@ -33,11 +36,42 @@
                     </svg>
                 </a>
             </div>
+
+            {{-- condição para quando não houver produtos cadastrados --}}
             @if ($productOutPuts->isEmpty())
-                <p>Nenhum produto cadastrado.</p>
+                <div class="alert alert-info d-flex flex-column align-items-center py-4 mt-3">
+                    <p class="mb-3">Produto não encontrado.</p>
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('productOutPuts.index') }}" class="btn btn-secondary">
+                            Voltar para saídas de Produtos
+                        </a>
+                    </div>
+                </div>
             @else
-                <table class="table table-striped table-bordered table-hover caption-top">
-                    <caption>Saídas de Produtos</caption>
+                {{-- fomulario de busca --}}
+                <form method="GET" action="{{ route('productOutPuts.index') }}" class="row g-2 mb-3">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control"
+                                placeholder="Buscar produto por nome ou número" value="{{ request('search') }}">
+                            <button type="submit"
+                                class="btn btn-secondary d-flex align-items-center justify-content-center px-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-search" viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ route('productOutPuts.index') }}" class="btn btn-secondary ">Limpar</a>
+                    </div>
+                </form>
+
+                {{-- tabela de produtos --}}
+                <table class="table table-striped table-bordered table-hover">
+                    <caption>Saída de Produtos</caption>
                     <thead class="header-table-custom">
                         <tr>
                             <th>ID</th>
@@ -88,6 +122,11 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                {{-- paginação --}}
+                <div class="d-flex justify-content-end pagination pagination-sm">
+                    {{ $productOutPuts->links('pagination::bootstrap-4') }}
+                </div>
             @endif
         </div>
     </div>

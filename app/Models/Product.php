@@ -19,22 +19,18 @@ class Product extends Model
         'quantity',         // saldo atual em estoque
     ];
 
-    //scopes para filtrar produtos pelo nome e número
-    public function scopeFilterName($query, $name)
+    // Scope para filtrar produtos pelo nome ou número
+    public function scopeFilterBySearch($query, $search)
     {
         // Aplica o filtro apenas se houver valor informado no campo de busca.
-        // Caso contrário, a query segue sem alteração.
-        if ($name) {
-            return $query->where('name', 'like', '%' . $name . '%');
+        if ($search) {
+            return $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('product_number', 'like', "%{$search}%");
+            });
         }
     }
 
-    public function scopeFilterNumber($query, $number)
-    {
-        if ($number) {
-            return $query->where('product_number', 'like', '%' . $number . '%');
-        }
-    }
 
 
     // metodos para relacionamentos
