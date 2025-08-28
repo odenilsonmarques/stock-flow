@@ -18,13 +18,19 @@
         <div class="row mt-3">
             <div class="col-lg-12">
                 <div class="row text-center justify-content-center">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3 show-card">
-                        <div class="card border-0">
-                            <div class="card-body ">
-                                <h6 class="card-title">Produtos Disponíveis</h6>
-                                <button  data-bs-toggle="modal" data-bs-target="#productsModal" type="button" class="btn btn-outline-secondary bg-secondary text-white mt-3">
-                                    Ver detalhes <span class="badge text-bg-secondary bg-secondary mt-1 ms-2 fs-6 border-white border">{{ $availableProducts }}</span>
-                                </button>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                        <!-- Produtos disponíveis  -->
+                        <div class="col-12 col-md mb-3">
+                            <div class="card shadow-sm border-0">
+                                <div class="card-body text-center">
+                                    <h6 class="card-title">Produtos Disponíveis</h6>
+                                    <h3 class="fw-bold text-success">{{ $availableProducts }}</h3>
+                                    <!-- Botão para abrir o modal -->
+                                    <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#productsModal">
+                                        Ver detalhes
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

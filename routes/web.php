@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductOutPut\ProductOutPutController;
 use App\Http\Controllers\ProductInput\ProductInputController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\Report\ReportController;
 
 Route::get('/',[SiteController::class, 'index'])->name('site.index');
 
@@ -74,4 +75,5 @@ Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name
 // Rota para o dashboard do usuário que nao seja admin
 Route::get('/users/dashboard', [UserDashboardController::class, 'index'])->name('users.dashboard')->middleware('auth');
 
-
+// Rotas para relatórios
+Route::get('/reports/products', [ReportController::class, 'productMovements'])->name('reports.products');

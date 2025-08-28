@@ -20,7 +20,7 @@ class ProductController extends Controller
         $products = Product::query()  
             ->filterBySearch($search) // aplica o filtro centralizado no Model
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
         $products->appends(request()->all());
 
