@@ -32,8 +32,6 @@ Route::post('products-input', [ProductInputController::class, 'store'])->name('p
 
 
 
-
-
 Route::get('product-outputs',[ProductOutPutController::class, 'index'])->name('productOutPuts.index')->middleware('auth', 'admin');
 Route::get('product-outputs/create',[ProductOutPutController::class, 'create'])->name('productOutputs.create')->middleware('auth', 'admin');
 Route::post('product-outputs', [ProductOutPutController::class, 'store'])->name('productOutputs.store')->middleware('auth', 'admin');
@@ -69,11 +67,25 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('users', UserController::class)->except(['show']);
 });
 
-// Rota para o dashboard do admin
-Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
 
 // Rota para o dashboard do usuário que nao seja admin
 Route::get('/users/dashboard', [UserDashboardController::class, 'index'])->name('users.dashboard')->middleware('auth');
 
-// Rotas para relatórios
-Route::get('/reports/products', [ReportController::class, 'productMovements'])->name('reports.products');
+// Rota para o dashboard do admin
+Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth', 'admin');
+
+// Rotas para view de relatórios basico
+Route::get('/report/basic/products', [ReportController::class, 'reportBasicProduct'])->name('report.basic.products')->middleware('auth', 'admin');
+
+// Rota para gerar o PDF do relatório básico
+Route::get('/report/basic/pdf', [ReportController::class, 'reportBasicPdf'])->name('report.basic.pdf')->middleware('auth', 'admin');
+
+// Rota para o relatório detalhado de produtos
+Route::get('/report/details/products', [ReportController::class, 'reportDetailedProducts'])->name('report.details.products')->middleware('auth', 'admin');
+
+//Rota para gerar o PDF do relatório detalhado de produtos
+Route::get('/report/details/pdf', [ReportController::class, 'reportDetailedPdf'])->name('report.details.pdf')->middleware('auth', 'admin');
+
+
+
+

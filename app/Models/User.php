@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function productOutputs()
     {
-        return $this->hasMany(ProductOutPuts::class);
+        return $this->hasMany(ProductOutPut::class);
     }
 
     public function productInputs()
