@@ -28,7 +28,6 @@
                                     <h3 class="fw-bold text-primary">{{ $suppliersQuantity }}</h3>
                                     <small>Total cadastrados</small>
                                 </div>
-
                             </div>
                         </div>
 

@@ -51,7 +51,7 @@
                         </svg>
                     </a>
 
-                    <a href="{{ route('report.details.pdf', ['start_date' => $startDate, 'end_date' => $endDate]) }}"
+                    <a href="{{route('admin.dashboard') }}"
                         class="btn btn-secondary d-inline-flex align-items-center gap-2">
                         <span class="">Dashboard</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

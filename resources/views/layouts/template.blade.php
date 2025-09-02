@@ -45,12 +45,11 @@
         @yield('content')
     </section>
 
-    <footer>
+    <footer class="mt-5" style="background-color: #94AF9F; color: white;">
         <div class="container">
-            <div class="row mt-5 mb-5">
-                <div class="col-sm-12 text-center">
-                    <p>&copy; {{ date('Y') }} Your Company. All rights reserved.</p>
-                </div>
+            <div class="row text-center p-3">
+                <p class="mt-4">&copy; {{ date('Y') }} G.E.M </p>
+                <small>Gestão de Estoque Municipal</small>
             </div>
         </div>
     </footer>

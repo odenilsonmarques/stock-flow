@@ -16,8 +16,7 @@
         <nav class="navbar fixed-top navbar-expand-sm navbar-dark" style="background-color:#94AF9F">
             <div class="container">
                 <a class="navbar-brand d-flex flex-column align-items-start" href="/">
-                    <span class="fw-bold fs-4">S.E.M</span>
-                    <small class="fs-6 ">Sistema de Estoque Municipal</small>
+                    <span class="fw-bold fs-4">G.E.M</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapsibleNavbar">

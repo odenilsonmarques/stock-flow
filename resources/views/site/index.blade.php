@@ -14,7 +14,7 @@
 
                 <div class="col-12 col-md-7 col-lg-6 order-md-1">
                     <!-- Heading -->
-                    <h1 class="display-3 text-center text-md-start">
+                    <h1 class="display-3 text-center text-md-start mt-5 mt-md-3">
                         Gestão de <span class="text-custom-hero">Estoque</span> <br> Municipal
                     </h1>
 
@@ -36,8 +36,7 @@
 
     <div class="container">
         <div class="row texts-features">
-            <h2 class="text-center mt-5 mb-5">Benefícios</h2>
-         
+            <h2 class="text-center mt-3 mb-5">Benefícios</h2>
             <div class="col-12 col-md mb-3">
                 <div class="card shadow-sm">
                     <div class="card-body show-card">
@@ -48,7 +47,6 @@
                             preciso e confiável.
                         </p>
                     </div>
-
                 </div>
             </div>
 
@@ -76,7 +74,6 @@
                             recursos.
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>
