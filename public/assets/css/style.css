@@ -1,54 +1,57 @@
-body{
+body {
     background-color: #f8f6f6;
+    padding-top: 90px;
+    /* ajuste se mudar o padding da navbar */
 }
 
 .navbar a.navbar-brand {
     color: #FEFBF6;
-    font-weight: bold;   
+    font-weight: bold;
     font-size: 20px;
 }
 
-.navbar-expand-sm .navbar-nav .nav-link{
+.navbar-expand-sm .navbar-nav .nav-link {
     color: #FEFBF6;
 }
 
-.navbar-expand-sm .navbar-nav .nav-link:hover{
+.navbar-expand-sm .navbar-nav .nav-link:hover {
     text-decoration: underline;
 }
 
 
-button a{
+button a {
     text-decoration: none;
     color: #fff;
 }
 
-.card-header{
-    background-color: #6c757d;;
-}
-
-
-.header-table-custom{
+.card-header {
     background-color: #6c757d;
-   
+    ;
 }
 
 
-.header-table{
-    background-color: #AEC2B6 ;
+.header-table-custom {
+    background-color: #6c757d;
+
 }
 
-table th{
-    color:#fff;
-    
+
+.header-table {
+    background-color: #AEC2B6;
 }
 
-table td a{
-    color:#94AF9F;
+table th {
+    color: #fff;
+
+}
+
+table td a {
+    color: #94AF9F;
     padding-left: 8px;
 }
 
-table td a:hover{
-    color:#111;
+table td a:hover {
+    color: #111;
 }
 
 
@@ -59,9 +62,9 @@ table td a:hover{
 /* .yellow-row {
     color: red;
 } */
-                        
 
-.qtdProduct{
+
+.qtdProduct {
     margin-left: 5px;
     border: 1px solid #fff;
     padding: 1px 3px 1px 3px;
@@ -70,14 +73,15 @@ table td a:hover{
     border-radius: 30px;
 }
 
-.alert-custom{
+.alert-custom {
     margin-top: 70px;
     margin-bottom: -70px;
 }
 
 .required::after {
     content: "*";
-    color: red; /* Cor do asterisco */
+    color: red;
+    /* Cor do asterisco */
     margin-left: 3px;
 }
 
@@ -89,15 +93,15 @@ a.new-supplier:hover{
     color: #94AF9F;
 } */
 
-.button-new-register{
-    background-color:#94AF9F;
+.button-new-register {
+    background-color: #94AF9F;
     border: none;
     height: 30px;
     margin-top: 7px;
 }
 
-.button-new-register a{
-    color:#fff;
+.button-new-register a {
+    color: #fff;
 }
 
 /* .inputSearch{
@@ -105,28 +109,28 @@ a.new-supplier:hover{
 } */
 
 
-button.inputSearch{
-    border:1px solid #fff;
+button.inputSearch {
+    border: 1px solid #fff;
     background-color: #94AF9F;
-    color:#fff;
+    color: #fff;
     margin-left: 5px;
 }
 
 
 
 
-.search-and-button{
-    margin-top:100px;
+.search-and-button {
+    margin-top: 100px;
     /* border: 1px solid red; */
     color: #AEC2B6;
-    
+
 }
 
-.caption-table{
+.caption-table {
     font-size: 18px;
 }
 
-.warning-product{
+.warning-product {
     background-color: #94AF9F;
     font-size: 13px;
     padding-left: 5px;
@@ -134,42 +138,43 @@ button.inputSearch{
     border-radius: 5px;
     height: 30px;
     text-align: center;
-  
+
 }
 
-.warning-product,a{
+.warning-product,
+a {
     padding-top: 5px;
     text-decoration: none;
     color: #fff;
-   
+
 }
 
-.modal-header h5{
+.modal-header h5 {
     text-align: center;
 }
 
-.hero{
+/* .hero{
     margin-top: 100px;
     
-}
+} */
 
-.hero-text h1{
+.hero-text h1 {
     font-size: 47px;
     font-weight: bold;
     color: #94AF9F;
 }
 
-.hero-text p{
+.hero-text p {
     font-size: 30px;
     color: #111;
 }
 
 .show-card {
-    padding: 15px;
+    /* padding: 15px; */
     border-radius: 5px;
     /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
     border: 2px solid #94AF9F;
-    margin: 5px;
+    /* margin: 5px; */
     transition: box-shadow 0.3s ease-in-out;
 
 }
@@ -178,12 +183,12 @@ button.inputSearch{
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
-.texts-features h2{
+.texts-features h2 {
     color: #94AF9F;
     padding-top: 60px;
 }
 
-.data-dashboard{
+.data-dashboard {
     padding-top: 100px;
 }
 
@@ -195,12 +200,24 @@ button.inputSearch{
     width: 100vw;
 }
 
-.supplier-datas{
+.supplier-datas {
     margin-top: 100px;
 }
 
 
 
-.text-custom-btn-users{
-    font-size: 13px;;
+.text-custom-btn-users {
+    font-size: 13px;
+    ;
+}
+
+.text-custom-hero {
+    color: #94AF9F;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn-custom-hero {
+    background-color: #94AF9F;
+    border: none;
+    color: #fff;
 }

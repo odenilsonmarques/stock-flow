@@ -1,25 +1,34 @@
 @extends('layouts.template')
 @section('title', 'Home Page')
 @section('content')
-    {{-- <div class="container">
-        <h1>Welcome to Our Site</h1>
-        <p>This is the home page of our site.</p>
-        <a href="{{ route('suppliers.index') }}" class="btn btn-primary">fornecedores</a>
-        <a href="{{ route('products.index') }}" class="btn btn-primary">produtos</a>
-        <a href="{{ route('productOutPuts.index') }}" class="btn btn-primary">saida de produtos</a>
-    </div> --}}
 
     <div class="container-fluid">
-        <div class="container hero">
-            <div class="row">
-                <div class="col-lg-6 hero-text">
-                    <h1 class="mt-5">Fluxo de Estoque</h1>
-                    <p class="mt-3">Gerencie seu estoque de forma automática</p>
-                    <img src="{{ 'assets/img/estoque4.svg' }}" alt="" width="250" height="250px">
+
+        <div class="container mt-3">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-5 col-lg-6 order-md-2 text-md-center">
+                    <!-- Image -->
+                    <img src="{{ asset('assets/img/img-hero.png') }}"
+                        class="img-fluid mw-md-150 mw-lg-130 mb-6 mb-md-0 aos-init aos-animate " alt="..." width="280">
                 </div>
-                <div class="col-lg-6 text-center">
-                    <img src="{{ 'assets/img/loja_virtual.webp' }}" alt="" class="" width="350"
-                        height="">
+
+                <div class="col-12 col-md-7 col-lg-6 order-md-1">
+                    <!-- Heading -->
+                    <h1 class="display-3 text-center text-md-start">
+                        Gestão de <span class="text-custom-hero">Estoque</span> <br> Municipal
+                    </h1>
+
+                    <!-- Text -->
+                    <p class="lead text-center text-md-start text-body-secondary mb-6 mb-lg-8">
+                        Gestão inteligente de estoque para o setor público
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="text-center text-md-start">
+                        <a href="/login" class="btn btn-custom-hero shadow lift ">
+                            Acessar
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,29 +36,48 @@
 
     <div class="container">
         <div class="row texts-features">
-            <h2 class="text-center mt-5">Benefícios</h2>
-            <div class="col text-center mt-5 show-card">
-                <h5 class="mt-3">Precisão</h5>
-                <p class="mt-3">
-                    Minimize a probabilidade de registros incorretos ou perda de informações. Isso leva a um estoque mais
-                    preciso e confiável.
-                </p>
+            <h2 class="text-center mt-5 mb-5">Benefícios</h2>
+         
+            <div class="col-12 col-md mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body show-card">
+                        <h6 class="card-title">Precisão</h6>
+                        <p class="mt-3">
+                            Minimize a probabilidade de registros incorretos ou perda de informações. Isso leva a um estoque
+                            mais
+                            preciso e confiável.
+                        </p>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="col text-center mt-5 show-card">
-                <h5 class="mt-3">Eficiência</h5>
-                <p class="mt-3">
-                    Se concentrem em tarefas mais estratégicas em vez de passar tempo lidando com papelada e contagens
-                    manuais.
-                </p>
+            <div class="col-12 col-md mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body show-card">
+                        <h6 class="card-title">Eficiência</h6>
+                        <p class="mt-3">
+                            Se concentrem em tarefas mais estratégicas em vez de passar tempo lidando com papelada e
+                            contagens
+                            manuais.
+                        </p>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="col text-center mt-5 show-card">
-                <h5 class="mt-3">Tomada de decisões</h5>
-                <p class="mt-3">
-                    Com dados precisos e em tempo real, você pode tomar decisões informadas sobre compras e alocação de
-                    recursos.
-                </p>
+            <div class="col-12 col-md mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body show-card">
+                        <h6 class="card-title">Tomada de decisões</h6>
+                        <p class="mt-3">
+                            Com dados precisos e em tempo real, você pode tomar decisões informadas sobre compras e alocação
+                            de
+                            recursos.
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
