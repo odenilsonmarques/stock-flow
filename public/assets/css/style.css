@@ -18,6 +18,9 @@ body {
     text-decoration: underline;
 }
 
+/* .header-custom{
+    height: 10px;
+} */
 
 button a {
     text-decoration: none;
@@ -26,7 +29,7 @@ button a {
 
 .card-header {
     background-color: #6c757d;
-    ;
+    
 }
 
 

@@ -15,10 +15,10 @@
             }
         @endphp
         <h6 class="text-center">{{ $mensagem }}, {{ date('d/m/Y') }}</h6>
-        <div class="row mt-3">
+        <div class="row mt-5 pb-5">
             <div class="col-lg-12">
                 <div class="row text-center justify-content-center">
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5">
                         <!-- Produtos disponíveis  -->
                         <div class="col-12 col-md mb-3">
                             <div class="card shadow-sm border-0">
@@ -75,9 +75,3 @@
     </div>
 @endsection
 
-
-<style>
-    h1.title {
-        margin-top: 100px;
-    }
-</style>
