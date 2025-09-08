@@ -10,7 +10,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="col-lg-12 mt-5 justify-content-end d-flex ">
+            <div class="col-lg-12 justify-content-end d-flex">
                 <a href="{{ route('admin.dashboard') }}"
                     class="btn btn-secondary d-inline-flex align-items-center gap-2 me-2">
                     <span class="text-custom-btn-users">Dashboard </span>
@@ -36,7 +36,7 @@
             @if ($users->isEmpty())
                 <p>Nenhum usuário cadastrado.</p>
             @else
-                <table class="table table-striped table-bordered table-hover caption-top">
+                <table class="table table-striped table-bordered table-hover mb-5 mt-3">
                     <caption>Usuários</caption>
                     <thead class="header-table-custom">
                         <tr>

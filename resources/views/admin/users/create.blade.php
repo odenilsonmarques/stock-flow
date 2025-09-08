@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <div class="row mt-5">
-            <div class="col-lg-12  mt-5 justify-content-end d-flex">
+            <div class="col-lg-12 justify-content-end d-flex">
                 <a href="{{ route('admin.dashboard') }}"
                     class="btn btn-secondary d-inline-flex align-items-center gap-2 me-2">
                     <span class="text-custom-btn-users">Dashboard </span>
